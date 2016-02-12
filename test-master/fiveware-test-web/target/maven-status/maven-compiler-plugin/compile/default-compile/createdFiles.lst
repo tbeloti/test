@@ -1,0 +1,5 @@
+br/com/test/dto/FormularioDto.class
+br/com/test/controllers/CadastroController.class
+br/com/test/conf/SpringMVCServlet.class
+br/com/test/service/impl/CadastroService.class
+br/com/test/conf/AppWebConfiguration.class
