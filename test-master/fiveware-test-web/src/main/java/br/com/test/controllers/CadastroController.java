@@ -34,7 +34,7 @@ public class CadastroController
    
    @RequestMapping(value = "/salvar", method = RequestMethod.POST)
    public ResponseEntity<?> salvar(@Valid FormularioDto formulario, Model model ) {
-	   System.out.println("valor" + formulario.toString() ); 
+	   
 	  try{
 		  cadastroService.salvarFormulario(formulario);
 		  model.addAttribute("status", "OK");

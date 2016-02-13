@@ -63,7 +63,12 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>br.com.test.model</groupId>
+			<artifactId>fiveware-test-model</artifactId>
+			<version>1.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>fiveware-test-service</finalName>

@@ -2,5 +2,6 @@
     <wb-module deploy-name="fiveware-test-model">
         <wb-resource deploy-path="/" source-path="/src/main/java"/>
         <wb-resource deploy-path="/" source-path="/main"/>
+        <wb-resource deploy-path="/" source-path="/resources"/>
     </wb-module>
 </project-modules>
