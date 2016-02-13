@@ -1,2 +1,6 @@
+/home/teofilo/workspace/test/test-master/fiveware-test-service/src/main/java/br/com/test/facade/PessoalFacade.java
+/home/teofilo/workspace/test/test-master/fiveware-test-service/src/main/java/br/com/test/dao/PessoalDao.java
+/home/teofilo/workspace/test/test-master/fiveware-test-service/src/main/java/br/com/test/model/Endereco.java
 /home/teofilo/workspace/test/test-master/fiveware-test-service/src/main/java/br/com/test/dto/FormularioDto.java
+/home/teofilo/workspace/test/test-master/fiveware-test-service/src/main/java/br/com/test/model/Pessoal.java
 /home/teofilo/workspace/test/test-master/fiveware-test-service/src/main/java/br/com/test/service/PessoaService.java

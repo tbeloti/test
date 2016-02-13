@@ -5,6 +5,8 @@ import java.net.MalformedURLException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,16 +33,24 @@ public class CadastroController
    
    
    @RequestMapping(value = "/salvar", method = RequestMethod.POST)
-   public String salvar(@Valid FormularioDto formulario, Model model ) throws MalformedURLException{
+   public ResponseEntity<?> salvar(@Valid FormularioDto formulario, Model model ) {
 	   System.out.println("valor" + formulario.toString() ); 
-	   
+	  try{
 		  cadastroService.salvarFormulario(formulario);
-		   model.addAttribute("status", "OK");
+		  model.addAttribute("status", "OK");
 		   model.addAttribute("formulario", formulario);
 	  
 	   
-	  
-	   return "ok";
+		   
+	   return new ResponseEntity<>(HttpStatus.OK);
+	  }catch(Exception e){
+		  String errorMessage;
+	       errorMessage = "Erro : " + e.getMessage();
+	       return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST); 
+	  }
+		  
+			   
+			  
    }
    
   

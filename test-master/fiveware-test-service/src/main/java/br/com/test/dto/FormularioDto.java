@@ -2,17 +2,10 @@ package br.com.test.dto;
 
 import java.util.Arrays;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
-import org.jboss.resteasy.annotations.providers.jaxb.json.Mapped;
 
-@Mapped
 @XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name="formulario", propOrder = {"nome","idade","estadoCivil","temFilhos","qtdFilhos","logradouro","numero","cep","bairro","conhecimentos"})
 public class FormularioDto { 
 	public FormularioDto(){}
 	

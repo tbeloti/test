@@ -9,11 +9,12 @@
 	<title>Test Master Web</title>
 	<link rel="stylesheet" href="<c:url value='/assets/css/bootstrap.min.css'/>">
   	<link rel="stylesheet" href="<c:url value='/assets/css/bootstrap-theme.min.css'/>">
+  	<link rel="stylesheet" href="<c:url value='/assets/css/index.css'/>">
 	
 </head>
 <body>
 	<div class="container">
-		<div class="panel panel-default">
+		<div id="painelCadastro" class="panel panel-default">
 		  <div class="panel-heading">
 		    <h3 class="panel-title">Cadastro Test Master</h3>
 		  </div>
@@ -23,13 +24,13 @@
 	  				<div class="col-xs-10">
 	  					<div class="form-group">
 		  					<label for="nome">Nome</label>
-		    				<input type="text" class="form-control" id="nome" name="nome" >
+		    				<input type="text" class="form-control" id="nome" name="nome" data-msgErro="favor informe o nome." >
 	    				</div>
 	  				</div>
 	  				<div class="col-xs-2">
 	  					<div class="form-group">
 		  					<label for="idade">Idade</label>
-		    				<input type="text" class="form-control" id="idade" name="idade">
+		    				<input type="text" class="form-control onlyNumber" id="idade" name="idade" data-msgErro="favor informe a idade">
 	    				</div>
 	  				</div>
 	  			</div>
@@ -37,12 +38,15 @@
 			  		<div class="col-xs-6">
 			  			<div class="form-group">
 				  			<label for="estadoCivil">Estado Civil</label>
-				  			<div class="checkbox">
-				    		<label>Solteiro <input type="radio" name="estadoCivil" value="S"> </label>
-				    		<label>Casado <input type="radio" name="estadoCivil" value="N"> </label>
-				    		<label>Divorciado <input type="radio" name="estadoCivil" value="D"> </label>
-				    		<label>Viuvo <input type="radio" name="estadoCivil" value="V"> </label>
-				    		</div>
+				  			<select  id="estadoCivil" name="estadoCivil" data-msgErro="favor selecione o estado Civil.">
+				  				<option value="">SELECIONE...</option>
+				  				<option value="S">Solteiro</option>
+				  				<option value="C">Casado</option>
+				  				<option value="D">Divorciado</option>
+				  				<option value="V">Viúvo</option>
+				  				
+				  			</select>
+				  			
 			    		</div>
 			  		</div>
 			  		<div class="col-xs-3">
@@ -57,7 +61,7 @@
 			  		<div class="col-xs-2">
 	  					<div class="form-group">
 		  					<label for="qdtFilhos">Quantos Filhos</label>
-		    				<input type="text" class="form-control" id="qdtFilhos" name="qtdFilhos" maxlength="2">
+		    				<input type="text" class="form-control onlyNumber" id="qdtFilhos" name="qtdFilhos" maxlength="2" data-msgErro="favor informe quantos filhos.">
 	    				</div>
 	  				</div>		
 			  	</div>
@@ -71,19 +75,19 @@
 		  					<div class="row">
 		  						<div class="col-xs-6">
 		  							<label for="logradouro">Logradouro</label>
-		  							<input type="text" class="form-control" id="logradouro" name	="logradouro">
+		  							<input type="text" class="form-control" id="logradouro" name="logradouro" data-msgErro="favor informe o logradouro do endereço.">
 		  						</div>
 		  						<div class="col-xs-1">
-		  							<label for="numero">Numero</label>
-		  							<input type="text" class="form-control" id="numero" name="numero">
+		  							<label for="numero">Número</label>
+		  							<input type="text" class="form-control onlyNumber" id="numero" name="numero" data-msgErro="favor informe o número do endereço">
 		  						</div>
 		  						<div class="col-xs-2">
 		  							<label for="cep">CEP</label>
-		  							<input type="text" class="form-control" id="cep"  name="cep">
+		  							<input type="text" class="form-control" id="cep"  name="cep" data-msgErro="favor informe o CEP do endereço">
 		  						</div>
 		  						<div class="col-xs-3">
 		  							<label for="bairro">Bairro</label>
-		  							<input type="text" class="form-control" id="bairro" name="bairro">
+		  							<input type="text" class="form-control" id="bairro" name="bairro" data-msgErro="favor informe o nome do bairro do endereço.">
 		  						</div>
 		  					</div>
 		  					
@@ -138,17 +142,52 @@
 		  </div>
 		</div>
   		
+  		
+  		<div id="mensagemSucesso" class="alert alert-success alert-dismissable ">
+		  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		  <strong>Parabens!</strong> Seu cadastro foi salvo com sucesso.
+		</div>
 	</div>
 	<script src="<c:url value='/assets/js/jquery-2.1.4.min.js'/>"></script>
 	<script src="<c:url value='/assets/js/bootstrap.min.js'/>"></script>
+	<script src="<c:url value='/assets/js/jquery.maskedinput.js'/>"></script>
 	<script>
 		$(function(){
+			
+			
+			
+			$("#mensagemSucesso").hide();
+			$("#cep").mask("99999-999");
+			$('.onlyNumber').keypress(function(event) {
+		        var key = (window.event) ? event.keyCode : event.which;
+		        if ((key > 47 && key < 58)) return true;
+		        else {
+		            if (key != 8) return false;
+		            else return true;
+		        }
+		    });
+			
 			$("#btnEnviar").click(function(){
+				
+				
+				
+				$.each($('input[type="text"], select') , function(index, value){
+				      console.log(index);
+				      if ( $(value).val() == '' ){
+				    	  alert($(value).data().msgerro);
+				    	  return false;
+				      }
+				      
+				}); 
+				
+				
+				
 				$.ajax({
 						url: "salvar", 
 						success: function(result){
-								console.log('ok ' + result)
-			    				},
+							$("#mensagemSucesso").show();
+							$("#painelCadastro").hide();
+			    		},
 			    		context: document.body,
 			    		method: 'POST',
 			    		data: $("form").serialize()

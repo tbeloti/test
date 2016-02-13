@@ -1,2 +1,6 @@
 br/com/test/dto/FormularioDto.class
+br/com/test/model/Endereco.class
+br/com/test/model/Pessoal.class
+br/com/test/facade/PessoalFacade.class
 br/com/test/service/PessoaService.class
+br/com/test/dao/PessoalDao.class

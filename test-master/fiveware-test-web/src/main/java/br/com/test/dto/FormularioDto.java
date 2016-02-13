@@ -1,33 +1,38 @@
 package br.com.test.dto;
 import java.util.Arrays;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.NONE)
 public class FormularioDto { 
 	public FormularioDto(){}
 	
+	
 	private String nome;
 	
-	private int idade;
+	
+	private Integer idade;
+	
 	
 	private String estadoCivil;
 	
+	
 	private boolean temFilhos;
 	
-	private int qtdFilhos;
+	
+	private Integer qtdFilhos;
+	
 	
 	private String logradouro;
 	
+	
 	private String numero;
+	
 	
 	private String cep;
 	
+	
 	private String bairro;
+	
 	
 	private String[] conhecimentos;
 	
