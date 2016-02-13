@@ -171,7 +171,7 @@
 			
 			
 			
-			//$("#mensagemSucesso").hide();
+			$("#mensagemSucesso").hide();
 			
 			$("#cep").mask("99999-999");
 			
